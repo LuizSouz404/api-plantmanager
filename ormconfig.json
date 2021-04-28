@@ -1,6 +1,10 @@
 {
-  "type": "sqlite",
-  "database": "./src/database/database.sqlite",
+  "type": "postgres",
+  "host": "192.168.0.108",
+  "port": 5434,
+  "username": "postgres",
+  "password": "docker",
+  "database": "postgres",
   "migrations": ["./src/database/migrations/**.ts"],
   "entities": ["./src/models/**.ts"],
   "cli": {
