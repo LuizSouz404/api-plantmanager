@@ -7,7 +7,7 @@ var router = express_1.Router();
 exports.router = router;
 var plantController = new PlantController_1.PlantController();
 router.get('/', function (request, response) {
-    return response.send('"id": 10, "name": "Hortênsia", "about": "A hortênsia é uma planta rústica e se adapta a diferentes tipos de solos.",  "water_tips": "Mantenha a terra sempre húmida sem encharcar. Regue 1 vez no dia.",');
+    return response.send('OK true');
 });
 router.post('/plant', plantController.create);
 router.get('/plants', plantController.show);
