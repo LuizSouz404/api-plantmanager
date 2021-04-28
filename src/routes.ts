@@ -6,7 +6,7 @@ const router = Router();
 const plantController = new PlantController();
 
 router.get('/', (request: Request, response: Response) => {
-  return response.send('OK true');
+  return response.json({ message: 'ok true' });
 });
 
 router.post('/plant', plantController.create);

@@ -7,7 +7,7 @@ var router = express_1.Router();
 exports.router = router;
 var plantController = new PlantController_1.PlantController();
 router.get('/', function (request, response) {
-    return response.send('OK true');
+    return response.json({ message: 'ok true' });
 });
 router.post('/plant', plantController.create);
 router.get('/plants', plantController.show);
