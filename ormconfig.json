@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "host": "ec2-3-212-75-25.compute-1.amazonaws.com",
-  "port": 5432,
+  "host": "localhost",
+  "port": 5434,
   "username": "postgres",
-  "password": "03fd36ede133ffb9da272938303723081b260d0c239e8882dd57a57981b3dbb8",
-  "database": "d5169aluio086d",
+  "password": "docker",
+  "database": "postgres",
   "migrations": ["./src/database/migrations/**.ts"],
   "entities": ["./src/models/**.ts"],
   "cli": {
