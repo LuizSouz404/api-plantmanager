@@ -21,11 +21,21 @@ class PlantService {
   }: PlantRequest) {
     const plantRepository = getCustomRepository(PlantRepository);
 
+    const plantsExists = await plantRepository.findOne({
+      where: { name },
+    });
+
+    if (plantsExists) {
+      return plantsExists;
+    }
+
     const frequencyConvert = JSON.stringify(frequency);
+
+    const environmentString = environments.toString();
 
     const plant = plantRepository.create({
       about,
-      environment: environments,
+      environment: environmentString,
       frequency: frequencyConvert,
       name,
       photo,
