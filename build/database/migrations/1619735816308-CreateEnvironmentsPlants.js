@@ -36,66 +36,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PlantService = void 0;
+exports.CreateEnvironmentsPlants1619735816308 = void 0;
 var typeorm_1 = require("typeorm");
-var PlantRepository_1 = require("../repositories/PlantRepository");
-var PlantService = /** @class */ (function () {
-    function PlantService() {
+var CreateEnvironmentsPlants1619735816308 = /** @class */ (function () {
+    function CreateEnvironmentsPlants1619735816308() {
     }
-    PlantService.prototype.create = function (_a) {
-        var name = _a.name, about = _a.about, water_tips = _a.water_tips, photo = _a.photo, environments = _a.environments, frequency = _a.frequency;
+    CreateEnvironmentsPlants1619735816308.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
-            var plantRepository, plantsExists, frequencyConvert, environmentString, plant;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        plantRepository = typeorm_1.getCustomRepository(PlantRepository_1.PlantRepository);
-                        return [4 /*yield*/, plantRepository.findOne({
-                                where: { name: name },
-                            })];
-                    case 1:
-                        plantsExists = _b.sent();
-                        if (plantsExists) {
-                            return [2 /*return*/, plantsExists];
-                        }
-                        frequencyConvert = JSON.stringify(frequency);
-                        environmentString = environments.toString();
-                        plant = plantRepository.create({
-                            about: about,
-                            environment: environmentString,
-                            frequency: frequencyConvert,
-                            name: name,
-                            photo: photo,
-                            water_tips: water_tips,
-                        });
-                        return [4 /*yield*/, plantRepository.save(plant)];
-                    case 2:
-                        _b.sent();
-                        plant.frequency = JSON.parse(plant.frequency);
-                        return [2 /*return*/, plant];
-                }
-            });
-        });
-    };
-    PlantService.prototype.show = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var plantRepository, plants;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        plantRepository = typeorm_1.getCustomRepository(PlantRepository_1.PlantRepository);
-                        return [4 /*yield*/, plantRepository.find()];
+                    case 0: return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
+                            name: 'plants_environments',
+                            columns: [
+                                {
+                                    name: 'key',
+                                    type: 'varchar',
+                                },
+                                {
+                                    name: 'title',
+                                    type: 'varchar',
+                                },
+                            ],
+                        }))];
                     case 1:
-                        plants = _a.sent();
-                        plants.forEach(function (plant) {
-                            plant.frequency = JSON.parse(plant.frequency);
-                            plant.environment = Object(plant.environment.split(','));
-                        });
-                        return [2 /*return*/, { plants: plants }];
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    return PlantService;
+    CreateEnvironmentsPlants1619735816308.prototype.down = function (queryRunner) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, queryRunner.dropTable('plants_environments')];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return CreateEnvironmentsPlants1619735816308;
 }());
-exports.PlantService = PlantService;
+exports.CreateEnvironmentsPlants1619735816308 = CreateEnvironmentsPlants1619735816308;
