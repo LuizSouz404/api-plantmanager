@@ -5,6 +5,9 @@ module.exports = {
   "url": process.env.DATABASE_URL,
   "migrations": ["./build/database/migrations/**.js"],
   "entities": ["./build/models/**.js"],
+  "dialectOptions": {
+    "ssl": true
+  },
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
